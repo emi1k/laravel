@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', 'ProductController@index')->name('index');
+
+Route::get('/catalog/{code}', 'ProductController@view')->name('product-view');
