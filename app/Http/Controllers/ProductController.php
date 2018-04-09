@@ -19,6 +19,10 @@ class ProductController extends Controller
     {
         $product = Product::where('code', $code)->first();
 
+        if (is_null($product)){
+            abort(404);
+        }
+
         return view('product.view', [
             'product' => $product,
         ]);
