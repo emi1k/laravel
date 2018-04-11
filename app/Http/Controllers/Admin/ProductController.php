@@ -16,7 +16,7 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
-    public function add(Request $request, $id)
+    public function add(Request $request)
     {
         $product = new Product();
 
@@ -24,12 +24,16 @@ class ProductController extends Controller
             'product' => $product
         ]);
     }
-    public function create(Request $request, $id)
+    public function create(Request $request)
     {
-
+        $input = $request->all();
+        $product = new Product($input);
+        $product->save();
+        return redirect()->route('admin-products-index');
     }
     public function edit(Request $request, $id)
     {
+
 
     }
     public function update(Request $request, $id)
