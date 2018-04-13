@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>Товары</h1>
+    @if(Session::has('flash_message'))
+        <div class="alert alert-success">
+            {{ Session::get('flash_message') }}
+        </div>
+    @endif
     <a href="{{ route('admin-products-create') }}" class="btn">Новый</a>
     <table class="table table-striped">
         <thead>

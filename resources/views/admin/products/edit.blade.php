@@ -1,9 +1,9 @@
 @extends('template')
 
-@section('title', 'Добавить товар')
+@section('title', 'Изменить товар')
 
 @section('content')
-    <h1>Добавить товар</h1>
+    <h1>Изменить товар</h1>
     @if($errors->any())
         <div class="alert alert-danger">
             @foreach($errors->all() as $error)
@@ -12,9 +12,9 @@
         </div>
     @endif
 
-    <form method="post" action="{{ route('admin-products-add') }}">
+    <form method="post" action="{{ route('admin-products-update', $product->id) }}">
         {{ csrf_field() }}
-
+        @method('PATCH')
         <div class="form-group">
             <label for="name">Имя</label>
             <input type="text" class="form-control" name="name" value="{{ $product->name }}">
@@ -35,7 +35,9 @@
             <label for="active">Активность</label>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Добавить">
+        <input type="submit" class="btn btn-primary" value="Изменить">
     </form>
+
     <a href="{{ route('admin-products-index') }}">Назад</a>
+
 @endsection
