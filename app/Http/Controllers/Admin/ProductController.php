@@ -40,7 +40,7 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::findOrFail($id);
         return view('admin.products.edit', [
             'product' => $product,
         ]);
